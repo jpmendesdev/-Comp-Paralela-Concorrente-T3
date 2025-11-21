@@ -1,4 +1,4 @@
-# Análise de Desempenho de Algoritmos de Busca em Ambientes Concorrentes e Paralelos: Um Estudo Comparativo em Java
+# Análise de desempenho de pesquisa em textos com algoritmos seriais e paralelos
 
 # Resumo
 
