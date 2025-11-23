@@ -29,7 +29,7 @@ public class SerialCPU {
                     line = br.readLine();
                 }
                 String everything = sb.toString();
-                String[] everythingArray = everything.split(" ");
+                String[] everythingArray = everything.split("\\W+");
                 for (String ev : everythingArray) {
                     for (String palavra : palavrasList) {
                         if (palavra.equals(ev.toLowerCase())) {
