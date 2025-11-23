@@ -1,4 +1,4 @@
-![logo unifor](assets/logo_unifor.png)
+<img style="width:35%;" src="assets/logo_unifor.png">
 # Análise de desempenho de pesquisa em textos com algoritmos seriais e paralelos
 
 # Resumo
