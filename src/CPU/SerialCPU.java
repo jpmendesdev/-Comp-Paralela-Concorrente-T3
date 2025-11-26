@@ -11,41 +11,33 @@ import java.util.Scanner;
 public class SerialCPU {
     Scanner sc = new Scanner(System.in);
     public int runSerial(String[] arrayTextos) throws IOException {
-        int count = 0;
-        List<String> palavrasList = new ArrayList();
+        Scanner sc = new Scanner(System.in);
+        List<String> palavrasList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            System.out.println("Informe a palavra que deseja buscar no livro" + i);
-            String palavra = sc.next();
-            palavrasList.add(palavra.toLowerCase());
+            System.out.println("Informe a palavra que deseja buscar no livro " + i);
+            palavrasList.add(sc.next().toLowerCase());
         }
+        long startTotal = System.currentTimeMillis();
         for (String texto : arrayTextos) {
+            long start = System.currentTimeMillis();
             BufferedReader br = new BufferedReader(new FileReader(texto));
-            try {
-                StringBuilder sb = new StringBuilder();
-                String line = br.readLine();
-                while (line != null) {
-                    sb.append(line);
-                    sb.append(System.lineSeparator());
-                    line = br.readLine();
-                }
-                String everything = sb.toString();
-                String[] everythingArray = everything.split("\\W+");
-                for (String ev : everythingArray) {
-                    for (String palavra : palavrasList) {
-                        if (palavra.equals(ev.toLowerCase())) {
-                            count++;
-                        }
-                    }
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) sb.append(line).append("\n");
+            br.close();
+            String[] words = sb.toString().split("\\W+");
+            int count = 0;
+            for (String w : words)
+                for (String buscada : palavrasList)
+                    if (buscada.equals(w.toLowerCase()))
+                        count++;
 
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } finally {
-                br.close();
-            }
-            System.out.println(count + "resultados para o texto" + texto);
-            count = 0;
+            long end = System.currentTimeMillis();
+            System.out.println("Serial: " + count + " ocorrências no arquivo " + texto +
+                    " em " + (end - start) + " ms");
         }
-        return count;
+        long endTotal = System.currentTimeMillis();
+        System.out.println("Tempo total Serial = " + (endTotal - startTotal) + " ms");
+        return 0;
     }
 }
