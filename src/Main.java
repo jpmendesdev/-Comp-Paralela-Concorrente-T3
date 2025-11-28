@@ -1,5 +1,7 @@
 import CPU.SerialCPU;
 import CPU.ParallelalCPU;
+import GPU.ParallelalGPU;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,9 +18,14 @@ public class Main {
         String texto2 = "src/Amostras/Dracula-165307.txt";
         String texto3 = "src/Amostras/MobyDick-217452.txt";
         String[] arrayTextos = {texto1,texto2,texto3};
+        //CPU Serial
         SerialCPU scp = new SerialCPU();
         scp.runSerial(arrayTextos);
+        //CPU Paralelo
         ParallelalCPU pcp = new ParallelalCPU();
         pcp.runParallelCPU(arrayTextos);
+        //GPU Paralelo
+        ParallelalGPU pgp = new ParallelalGPU();
+        pgp.runParallelGPU(arrayTextos);
         }
     }
