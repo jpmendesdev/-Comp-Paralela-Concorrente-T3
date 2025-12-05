@@ -20,10 +20,10 @@ public class Main {
         String[] arrayTextos = {texto1,texto2,texto3};
         //CPU Serial
         SerialCPU scp = new SerialCPU();
-        scp.runSerial(arrayTextos);
+        //scp.runSerial(arrayTextos);
         //CPU Paralelo
         ParallelalCPU pcp = new ParallelalCPU();
-        pcp.runParallelCPU(arrayTextos);
+        //pcp.runParallelCPU(arrayTextos);
         //GPU Paralelo
         ParallelalGPU pgp = new ParallelalGPU();
         pgp.runParallelGPU(arrayTextos);
